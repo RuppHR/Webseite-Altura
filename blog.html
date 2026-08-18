@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blog – Altura Consulting | Insights aus Executive Search, Bau & Immobilien, DACH</title>
+  <meta name="description" content="Aktuelle Insights und Fachbeiträge von Altura Consulting zu Executive Search im DACH-Raum, der Bau- und Immobilienbranche sowie branchenaktuellen Themen rund um Personalberatung."/>
+  <meta name="keywords" content="Blog Personalberatung, Executive Search DACH, Bauindustrie Personalberatung, Immobilienbranche Headhunter, Executive Search international"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=Syne+Mono&display=swap" rel="stylesheet">
+  <style>
+    /* ── RESET ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Syne', sans-serif;
+      background: #f2f2f0;
+      color: #1c1c1c;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    #main-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 3rem;
+      background: rgba(242,242,240,0.96);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid #e0e0dc;
+      transition: padding .3s;
+    }
+    .nav-logo {
+      font-size: 14px; font-weight: 700; letter-spacing: .22em;
+      text-transform: uppercase; color: #1c1c1c; text-decoration: none;
+    }
+    .nav-logo b { color: #6b8e6b; font-weight: 700; }
+    .nav-links { display: flex; gap: 2rem; align-items: center; list-style: none; }
+    .nav-links a {
+      font-size: 11px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase;
+      text-decoration: none; color: #555; transition: color .2s; white-space: nowrap;
+    }
+    .nav-links a:hover { color: #1a3a6b; }
+    .nav-links a.active { color: #1a3a6b; }
+    .nav-links .nav-cta {
+      background: #1a3a6b; color: #fff !important;
+      padding: .4rem 1.1rem; transition: background .2s;
+    }
+    .nav-links .nav-cta:hover { background: #142d55; }
+    .nav-dropdown { position: relative; }
+    .dropdown-menu {
+      position: absolute; top: calc(100% + .8rem); left: 50%;
+      transform: translateX(-50%) translateY(6px);
+      background: #fff; border: 1px solid #e0e0dc;
+      list-style: none; min-width: 270px;
+      opacity: 0; visibility: hidden; pointer-events: none;
+      transition: opacity .2s, transform .2s, visibility .2s;
+    }
+    .nav-dropdown:hover .dropdown-menu {
+      opacity: 1; visibility: visible; pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+    }
+    .dropdown-menu li { width: 100%; }
+    .dropdown-menu a {
+      display: block; padding: .9rem 1.2rem;
+      font-size: 10.5px; letter-spacing: .14em; color: #333;
+      border-bottom: 1px solid #f0f0ec;
+    }
+    .dropdown-menu li:last-child a { border-bottom: none; }
+    .dropdown-menu a:hover { background: #f7f7f4; color: #1a3a6b; }
+    #nav-burger {
+      display: none; flex-direction: column; gap: 4px; cursor: pointer;
+      background: none; border: none; padding: 0;
+    }
+    #nav-burger span { width: 22px; height: 2px; background: #1c1c1c; transition: transform .3s, opacity .3s; }
+    #nav-burger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    #nav-burger.open span:nth-child(2) { opacity: 0; }
+    #nav-burger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+    /* ── HERO BLOG ── */
+    #blog-hero {
+      background: #1a2535; color: #f2f2f0;
+      padding: 10rem 3rem 5rem;
+      position: relative; overflow: hidden;
+    }
+    #blog-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 30% 40%, rgba(26,58,107,.5) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .blog-hero-inner { position: relative; z-index: 1; max-width: 1100px; }
+    .blog-hero-tag {
+      font-size: 11px; font-weight: 600; letter-spacing: .28em;
+      text-transform: uppercase; color: #9bb89a; margin-bottom: 1.4rem;
+    }
+    .blog-hero-title {
+      font-size: clamp(38px, 5vw, 64px); font-weight: 700;
+      letter-spacing: -.03em; line-height: 1.02; margin-bottom: 1.5rem;
+    }
+    .blog-hero-title span { color: #9bb89a; }
+    .blog-hero-sub {
+      font-size: 15px; color: rgba(242,242,240,.7); max-width: 640px;
+      line-height: 1.7; font-weight: 400;
+    }
+
+    /* ── FILTER ── */
+    #blog-filter {
+      background: #e8e8e4; padding: 2.5rem 3rem;
+      border-bottom: 1px solid #d8d8d2;
+    }
+    .filter-row {
+      display: flex; gap: .8rem; flex-wrap: wrap;
+      align-items: center; max-width: 1400px; margin: 0 auto;
+    }
+    .filter-label {
+      font-size: 10px; font-weight: 600; letter-spacing: .22em;
+      text-transform: uppercase; color: #6b8e6b; margin-right: .8rem;
+    }
+    .filter-btn {
+      font-family: 'Syne', sans-serif;
+      font-size: 11px; font-weight: 600; letter-spacing: .15em;
+      text-transform: uppercase; padding: .6rem 1.2rem;
+      background: transparent; border: 1px solid #1c1c1c; color: #1c1c1c;
+      cursor: pointer; transition: background .2s, color .2s;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: #1a3a6b; border-color: #1a3a6b; color: #fff;
+    }
+
+    /* ── SHARED ── */
+    .section-label {
+      font-size: 11px; font-weight: 600; letter-spacing: .28em;
+      text-transform: uppercase; color: #6b8e6b; margin-bottom: .8rem;
+    }
+    .section-h {
+      font-size: clamp(28px, 3.2vw, 38px); font-weight: 700;
+      letter-spacing: -.025em; color: #1c1c1c; margin-bottom: 2.5rem; line-height: 1.05;
+    }
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .75s ease, transform .75s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── ARTIKEL GRID ── */
+    #blog-grid-section {
+      background: #f2f2f0; padding: 5rem 3rem;
+    }
+    .blog-grid-inner { max-width: 1400px; margin: 0 auto; }
+    .blog-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+    }
+    .blog-card {
+      background: #fff; border: 1px solid #e0e0dc;
+      text-decoration: none; display: flex; flex-direction: column;
+      transition: border-color .25s, transform .25s, box-shadow .25s;
+    }
+    .blog-card:hover {
+      border-color: #1a3a6b; transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(20,30,45,.08);
+    }
+    .blog-card-img {
+      height: 180px; background: #1a2535;
+      position: relative; overflow: hidden;
+      background-size: cover; background-position: center;
+    }
+    .blog-card-img::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(26,37,53,.45) 0%, rgba(26,37,53,.75) 100%);
+      z-index: 1;
+    }
+    .blog-card-img.img-bauindustrie { background-image: url('https://images.pexels.com/photos/159306/construction-site-build-construction-work-159306.jpeg?auto=compress&cs=tinysrgb&w=800'); }
+    .blog-card-img.img-dach { background-image: url('https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=800'); }
+    .blog-card-img.img-immobilien { background-image: url('https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=800'); }
+    .blog-card-img.img-international { background-image: url('https://images.pexels.com/photos/2422294/pexels-photo-2422294.jpeg?auto=compress&cs=tinysrgb&w=800'); }
+    .blog-card-img.img-mittelstand { background-image: url('https://images.pexels.com/photos/3862627/pexels-photo-3862627.jpeg?auto=compress&cs=tinysrgb&w=800'); }
+    .blog-card-img.img-projektentwicklung { background-image: url('https://images.pexels.com/photos/834892/pexels-photo-834892.jpeg?auto=compress&cs=tinysrgb&w=800'); }
+    .blog-card-img.img-diskretion { background-image: url('https://images.pexels.com/photos/3760067/pexels-photo-3760067.jpeg?auto=compress&cs=tinysrgb&w=800'); }
+    .blog-card-img.img-esg { background-image: url('https://images.pexels.com/photos/1108572/pexels-photo-1108572.jpeg?auto=compress&cs=tinysrgb&w=800'); }
+    .blog-card-img.img-interim { background-image: url('https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=800'); }
+    .blog-card-img-overlay {
+      position: absolute; inset: 0; z-index: 2;
+      background: radial-gradient(ellipse at 40% 60%, rgba(155,184,154,.15) 0%, transparent 70%);
+    }
+    .blog-card-cat {
+      position: absolute; bottom: 1rem; left: 1rem; z-index: 3;
+      font-size: 10px; font-weight: 600; letter-spacing: .18em;
+      text-transform: uppercase; color: #fff;
+      border: 1px solid rgba(155,184,154,.6);
+      padding: .25rem .7rem; background: rgba(28,28,28,.75);
+      backdrop-filter: blur(4px);
+    }
+    .blog-card-body {
+      padding: 1.8rem; flex: 1; display: flex; flex-direction: column;
+    }
+    .blog-date {
+      font-size: 10px; font-weight: 600; letter-spacing: .15em;
+      text-transform: uppercase; color: #6b8e6b; margin-bottom: .7rem;
+    }
+    .blog-card-body h3 {
+      font-size: 17px; font-weight: 600; color: #1c1c1c;
+      margin-bottom: .9rem; line-height: 1.35; letter-spacing: -.01em;
+    }
+    .blog-card-body p {
+      font-size: 13px; line-height: 1.65; color: #666;
+      font-weight: 400; flex: 1;
+    }
+    .blog-read {
+      margin-top: 1.2rem; font-size: 10px; font-weight: 600;
+      letter-spacing: .18em; text-transform: uppercase; color: #6b8e6b;
+    }
+    .blog-card.hidden { display: none; }
+
+    /* ── ARTIKEL VOLLTEXT ── */
+    #blog-articles {
+      background: #f2f2f0; padding: 5rem 3rem 8rem;
+    }
+    .articles-inner { max-width: 880px; margin: 0 auto; }
+    .article-full {
+      background: #fff; border: 1px solid #e0e0dc;
+      padding: 4rem 4rem 3.5rem; margin-bottom: 3rem;
+      scroll-margin-top: 100px;
+    }
+    .article-cat {
+      display: inline-block;
+      font-size: 10px; font-weight: 600; letter-spacing: .22em;
+      text-transform: uppercase; color: #6b8e6b;
+      border: 1px solid #6b8e6b; padding: .3rem .8rem;
+      margin-bottom: 1.5rem;
+    }
+    .article-meta {
+      font-size: 11px; font-weight: 500; letter-spacing: .15em;
+      text-transform: uppercase; color: #888; margin-bottom: 1rem;
+    }
+    .article-full h2 {
+      font-size: clamp(26px, 3vw, 34px); font-weight: 700;
+      letter-spacing: -.025em; line-height: 1.15;
+      color: #1c1c1c; margin-bottom: 2rem;
+    }
+    .article-full h3 {
+      font-size: 19px; font-weight: 600; color: #1c1c1c;
+      margin: 2.2rem 0 .9rem; letter-spacing: -.01em;
+    }
+    .article-full p {
+      font-size: 15px; line-height: 1.8; color: #3a3a3a;
+      margin-bottom: 1.2rem; font-weight: 400;
+    }
+    .article-full ul {
+      margin: 1rem 0 1.5rem 1.4rem;
+    }
+    .article-full ul li {
+      font-size: 15px; line-height: 1.8; color: #3a3a3a;
+      margin-bottom: .6rem; font-weight: 400;
+    }
+    .article-full strong {
+      font-weight: 600; color: #1c1c1c;
+    }
+    .article-quote {
+      border-left: 3px solid #6b8e6b;
+      padding: 1.2rem 0 1.2rem 1.8rem;
+      margin: 2rem 0;
+      font-size: 17px; line-height: 1.6;
+      color: #1c1c1c; font-style: italic;
+      font-weight: 500;
+    }
+    .article-back {
+      display: inline-flex; align-items: center; gap: .6rem;
+      margin-top: 2.5rem; padding-top: 2rem;
+      border-top: 1px solid #e0e0dc;
+      font-size: 11px; font-weight: 600; letter-spacing: .2em;
+      text-transform: uppercase; color: #6b8e6b;
+      text-decoration: none; transition: color .2s;
+    }
+    .article-back:hover { color: #1a3a6b; }
+
+    /* ── CTA BLOCK ── */
+    #blog-cta {
+      background: #1a2535; padding: 5rem 3rem; text-align: center;
+    }
+    .cta-inner { max-width: 700px; margin: 0 auto; }
+    #blog-cta h2 {
+      font-size: clamp(28px, 3vw, 38px); font-weight: 700;
+      letter-spacing: -.025em; color: #f2f2f0;
+      margin-bottom: 1.2rem; line-height: 1.1;
+    }
+    #blog-cta p {
+      font-size: 15px; color: rgba(242,242,240,.7);
+      line-height: 1.7; margin-bottom: 2.2rem; font-weight: 400;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: .7rem;
+      background: #6b8e6b; color: #fff;
+      padding: .95rem 2rem; font-size: 11px; font-weight: 600;
+      letter-spacing: .22em; text-transform: uppercase;
+      text-decoration: none; transition: background .25s;
+      font-family: 'Syne', sans-serif;
+    }
+    .btn-primary:hover { background: #5a7c5a; }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: .6rem;
+      background: transparent; color: #1c1c1c;
+      padding: .85rem 1.8rem; font-size: 11px; font-weight: 600;
+      letter-spacing: .2em; text-transform: uppercase;
+      border: 1px solid #1c1c1c; text-decoration: none;
+      transition: background .25s, color .25s; font-family: 'Syne', sans-serif;
+    }
+    .btn-outline:hover { background: #1a3a6b; color: #fff; border-color: #1a3a6b; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #141e2d; padding: 2rem 3rem;
+      display: grid; grid-template-columns: 1fr 1fr 1fr; align-items: center;
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+    .footer-logo { font-size: 13px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: #f2f2f0; text-decoration: none; }
+    .footer-logo b { color: #6b8e6b; }
+    .footer-copy { font-size: 10px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.35); text-align: center; }
+    .footer-links { display: flex; gap: 1.5rem; justify-content: flex-end; }
+    .footer-links a { font-size: 10px; font-weight: 500; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.45); text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: #6b8e6b; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      #blog-hero { padding: 8rem 2rem 4rem; }
+      #blog-filter { padding: 2rem; }
+      #blog-grid-section { padding: 4rem 2rem; }
+      .blog-grid { grid-template-columns: 1fr 1fr; }
+      #blog-articles { padding: 4rem 2rem 6rem; }
+      .article-full { padding: 3rem 2.5rem 2.5rem; }
+      #blog-cta { padding: 4rem 2rem; }
+      footer { grid-template-columns: 1fr; gap: 1rem; text-align: center; padding: 2rem; }
+      .footer-links { justify-content: center; }
+    }
+    @media (max-width: 768px) {
+      #main-nav { padding: .9rem 1.5rem !important; }
+      .nav-links {
+        display: none; flex-direction: column; gap: 0;
+        position: absolute; top: 100%; left: 0; right: 0;
+        background: rgba(242,242,240,.98); border-bottom: 1px solid #e0e0dc;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li { width: 100%; }
+      .nav-links li a { display: block; padding: 1rem 1.5rem; border-bottom: 1px solid #e0e0dc; }
+      .nav-dropdown .dropdown-menu {
+        position: static; transform: none; opacity: 1; visibility: visible;
+        pointer-events: auto; min-width: 0; background: #f7f7f4; border: none;
+      }
+      #nav-burger { display: flex; }
+      #blog-hero { padding: 7rem 1.5rem 3rem; }
+      .blog-grid { grid-template-columns: 1fr; }
+      .article-full { padding: 2.5rem 1.5rem 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav id="main-nav">
+  <a class="nav-logo" href="index.html">Altura <b>·</b> Consulting</a>
+  <button id="nav-burger" aria-label="Menü">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html#ueber">Über uns</a></li>
+    <li class="nav-dropdown">
+      <a href="index.html#leistungen">Leistungen ▾</a>
+      <ul class="dropdown-menu">
+        <li><a href="executive-search.html">Executive Search &amp; Recruiting</a></li>
+        <li><a href="eignungsdiagnostik.html">Eignungsdiagnostik &amp; Potenzialanalysen</a></li>
+        <li><a href="employer-branding.html">Employer Branding &amp; Arbeitgeberidentität</a></li>
+      </ul>
+    </li>
+    <li><a href="index.html#prozess">Prozess</a></li>
+    <li><a href="index.html#team">Team</a></li>
+    <li><a href="blog.html" class="active">Blog</a></li>
+    <li><a href="jobs.html">Jobs</a></li>
+    <li><a href="index.html#kontakt" class="nav-cta">Kontakt</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="blog-hero">
+  <div class="blog-hero-inner">
+    <div class="blog-hero-tag">Blog · Insights · Analysen</div>
+    <h1 class="blog-hero-title">Perspektiven für<br><span>Führung & Talent.</span></h1>
+    <p class="blog-hero-sub">
+      Fachbeiträge, Marktanalysen und Praxiseinblicke aus dem Executive Search im DACH-Raum, der Bau- und Immobilienbranche und der internationalen Personalberatung. Diskret, fundiert, mit klarem Blick auf das, was Unternehmen heute bewegt.
+    </p>
+  </div>
+</section>
+
+<!-- FILTER -->
+<section id="blog-filter">
+  <div class="filter-row">
+    <span class="filter-label">Themen:</span>
+    <button class="filter-btn active" data-filter="all">Alle Beiträge</button>
+    <button class="filter-btn" data-filter="bau-immo">Bau &amp; Immobilien</button>
+    <button class="filter-btn" data-filter="executive-search">Executive Search</button>
+    <button class="filter-btn" data-filter="branche">Branchenaktuelles</button>
+  </div>
+</section>
+
+<!-- ARTIKEL GRID -->
+<section id="blog-grid-section">
+  <div class="blog-grid-inner">
+    <div class="blog-grid">
+
+      <a class="blog-card" href="#fuehrungskraefte-bauindustrie" data-cat="bau-immo">
+        <div class="blog-card-img img-bauindustrie">
+          <div class="blog-card-img-overlay"></div>
+          <span class="blog-card-cat">Bau &amp; Immobilien</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-date">April 2026</div>
+          <h3>Führungskräftemangel in der Bauindustrie – warum klassische Rekrutierung an Grenzen stößt</h3>
+          <p>Wie Bauunternehmen heute Bauleiter, Niederlassungsleiter und kaufmännische Geschäftsführer gewinnen – jenseits von Stellenanzeigen.</p>
+          <div class="blog-read">Weiterlesen →</div>
+        </div>
+      </a>
+
+      <a class="blog-card" href="#executive-search-dach" data-cat="executive-search">
+        <div class="blog-card-img img-dach">
+          <div class="blog-card-img-overlay"></div>
+          <span class="blog-card-cat">Executive Search</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-date">April 2026</div>
+          <h3>Executive Search im DACH-Raum – drei Märkte, drei Mentalitäten</h3>
+          <p>Was Deutschland, Österreich und die Schweiz im Top-Management-Recruiting unterscheidet – und warum Pauschallösungen scheitern.</p>
+          <div class="blog-read">Weiterlesen →</div>
+        </div>
+      </a>
+
+      <a class="blog-card" href="#immobilienbranche-wandel" data-cat="bau-immo">
+        <div class="blog-card-img img-immobilien">
+          <div class="blog-card-img-overlay"></div>
+          <span class="blog-card-cat">Bau &amp; Immobilien</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-date">März 2026</div>
+          <h3>Die Immobilienbranche im Umbruch – welche Profile jetzt gefragt sind</h3>
+          <p>ESG, Digitalisierung, Bestandsentwicklung: Wie sich Anforderungsprofile in Projekt- und Asset-Management verändern.</p>
+          <div class="blog-read">Weiterlesen →</div>
+        </div>
+      </a>
+
+      <a class="blog-card" href="#international-executive-search" data-cat="executive-search">
+        <div class="blog-card-img img-international">
+          <div class="blog-card-img-overlay"></div>
+          <span class="blog-card-cat">Executive Search</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-date">März 2026</div>
+          <h3>Internationaler Executive Search – wenn die Suche an der Grenze nicht endet</h3>
+          <p>Cross-Border Recruiting, kulturelle Passung und der Umgang mit globalen Talent-Pools.</p>
+          <div class="blog-read">Weiterlesen →</div>
+        </div>
+      </a>
+
+      <a class="blog-card" href="#fachkraeftemangel-mittelstand" data-cat="branche">
+        <div class="blog-card-img img-mittelstand">
+          <div class="blog-card-img-overlay"></div>
+          <span class="blog-card-cat">Branchenaktuelles</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-date">Februar 2026</div>
+          <h3>Fachkräftemangel 2026 – Was den deutschen Mittelstand wirklich bewegt</h3>
+          <p>Eine nüchterne Bestandsaufnahme – und konkrete Stellhebel jenseits der üblichen Plattitüden.</p>
+          <div class="blog-read">Weiterlesen →</div>
+        </div>
+      </a>
+
+      <a class="blog-card" href="#projektentwickler-2026" data-cat="bau-immo">
+        <div class="blog-card-img img-projektentwicklung">
+          <div class="blog-card-img-overlay"></div>
+          <span class="blog-card-cat">Bau &amp; Immobilien</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-date">Februar 2026</div>
+          <h3>Projektentwickler nach der Zinswende – neue Profile, neue Anforderungen</h3>
+          <p>Wie sich die Rolle des Projektentwicklers verändert hat und welche Kompetenzen heute den Unterschied machen.</p>
+          <div class="blog-read">Weiterlesen →</div>
+        </div>
+      </a>
+
+      <a class="blog-card" href="#diskretion-executive-search" data-cat="executive-search">
+        <div class="blog-card-img img-diskretion">
+          <div class="blog-card-img-overlay"></div>
+          <span class="blog-card-cat">Executive Search</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-date">Januar 2026</div>
+          <h3>Diskretion als Wettbewerbsvorteil – Warum vertrauliche Suchen den Unterschied machen</h3>
+          <p>Warum die besten Top-Management-Besetzungen selten öffentlich werden – und was das für Auftraggeber bedeutet.</p>
+          <div class="blog-read">Weiterlesen →</div>
+        </div>
+      </a>
+
+      <a class="blog-card" href="#esg-baubranche" data-cat="branche">
+        <div class="blog-card-img img-esg">
+          <div class="blog-card-img-overlay"></div>
+          <span class="blog-card-cat">Branchenaktuelles</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-date">Januar 2026</div>
+          <h3>ESG, CSRD &amp; Co. – Welche neuen Führungsrollen die Regulatorik schafft</h3>
+          <p>Sustainability Officer, ESG-Manager, Head of Decarbonization: Wie regulatorischer Druck neue Funktionen entstehen lässt.</p>
+          <div class="blog-read">Weiterlesen →</div>
+        </div>
+      </a>
+
+      <a class="blog-card" href="#interim-management" data-cat="branche">
+        <div class="blog-card-img img-interim">
+          <div class="blog-card-img-overlay"></div>
+          <span class="blog-card-cat">Branchenaktuelles</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-date">Dezember 2025</div>
+          <h3>Interim Management vs. Festanstellung – Wann welche Lösung wirklich passt</h3>
+          <p>Ein nüchterner Vergleich zweier Welten, die sich näher sind, als viele denken.</p>
+          <div class="blog-read">Weiterlesen →</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ARTIKEL VOLLTEXT -->
+<section id="blog-articles">
+  <div class="articles-inner">
+
+    <!-- ARTIKEL 1 -->
+    <article class="article-full" id="fuehrungskraefte-bauindustrie">
+      <span class="article-cat">Bau &amp; Immobilien</span>
+      <div class="article-meta">April 2026 · 7 Min. Lesezeit</div>
+      <h2>Führungskräftemangel in der Bauindustrie – warum klassische Rekrutierung an Grenzen stößt</h2>
+      <p>Die deutsche Bauindustrie steht vor einer paradoxen Situation: Trotz konjunktureller Schwächephasen, eingebrochenen Wohnungsbauzahlen und gestiegener Finanzierungskosten ist der Bedarf an erfahrenen Führungskräften ungebrochen hoch. Bauleiter, Niederlassungsleiter, kaufmännische Geschäftsführer – die Liste der schwer zu besetzenden Positionen wird länger statt kürzer.</p>
+      <p>Wer heute noch glaubt, dass eine Stellenanzeige auf den gängigen Portalen oder ein Aufruf im LinkedIn-Netzwerk ausreicht, um eine vakante Führungsposition zu besetzen, wird zunehmend enttäuscht. Die besten Kandidaten sind in festen Anstellungen, oft mit Bindungen über Bonusprogramme, Firmenwagen oder Beteiligungen. Sie suchen nicht aktiv – sie müssen gefunden und überzeugt werden.</p>
+
+      <h3>Warum die klassische Personalsuche versagt</h3>
+      <p>Drei Faktoren machen die Suche nach Führungskräften in der Bauindustrie heute besonders anspruchsvoll:</p>
+      <ul>
+        <li><strong>Demografischer Wandel:</strong> Eine ganze Generation erfahrener Bauleiter und Geschäftsführer geht in den nächsten zehn Jahren in den Ruhestand. Der Nachwuchs aus den Hochschulen reicht zahlenmäßig nicht aus, um die Lücke zu schließen.</li>
+        <li><strong>Veränderte Erwartungshaltung:</strong> Jüngere Führungskräfte legen Wert auf flexible Arbeitsmodelle, sinnstiftende Projekte und transparente Unternehmenskulturen – Faktoren, die in vielen Bauunternehmen noch nicht selbstverständlich sind.</li>
+        <li><strong>Spezialisierung:</strong> Klassische Generalisten reichen oft nicht mehr. Gefragt sind Profile mit Erfahrung in Sondergebieten wie schlüsselfertigem Hochbau, Tiefbau für Verkehrsinfrastruktur oder schadstoffsanierten Bestandsobjekten.</li>
+      </ul>
+
+      <div class="article-quote">
+        „Die Frage ist nicht mehr, ob ein Kandidat geeignet ist – sondern wie wir ihn überhaupt dazu bringen, uns zuzuhören."
+      </div>
+
+      <h3>Was funktioniert: Direktansprache und Netzwerkarbeit</h3>
+      <p>Erfolgreiche Bauunternehmen setzen heute auf eine Kombination aus Direktansprache, strukturierter Marktrecherche und persönlicher Netzwerkpflege. Executive Search bedeutet in diesem Kontext, nicht zu warten, bis sich Kandidaten bewerben, sondern aktiv den Markt zu kartografieren und gezielt auf Personen zuzugehen, die nicht aktiv suchen, aber offen für Veränderung sind.</p>
+      <p>Wichtig ist dabei die fachliche Tiefe: Wer mit einem erfahrenen Bauleiter spricht, muss verstehen, was BIM, LV-Erstellung und VOB im Alltag bedeuten. Pauschale Standardprozesse aus dem allgemeinen Recruiting scheitern hier oft an mangelnder Branchenkenntnis.</p>
+
+      <h3>Was Bauunternehmen jetzt tun sollten</h3>
+      <p>Konkret empfehlen sich drei Schritte: Erstens eine ehrliche Bestandsaufnahme des eigenen Arbeitgeberprofils. Zweitens die Investition in langfristige Beziehungen statt punktueller Suchaufträge. Und drittens die Bereitschaft, auch ungewöhnliche Profile in Betracht zu ziehen – zum Beispiel Quereinsteiger aus angrenzenden Branchen oder Rückkehrer aus dem Ausland.</p>
+      <a class="article-back" href="#blog-grid-section">← Zurück zur Übersicht</a>
+    </article>
+
+    <!-- ARTIKEL 2 -->
+    <article class="article-full" id="executive-search-dach">
+      <span class="article-cat">Executive Search</span>
+      <div class="article-meta">April 2026 · 8 Min. Lesezeit</div>
+      <h2>Executive Search im DACH-Raum – drei Märkte, drei Mentalitäten</h2>
+      <p>Wer den DACH-Raum als einheitlichen Wirtschaftsraum betrachtet, übersieht entscheidende Unterschiede. Deutschland, Österreich und die Schweiz teilen zwar die Sprache und vieles an wirtschaftlicher Verflechtung, doch im Top-Management-Recruiting offenbaren sich Mentalitäten und Erwartungen, die so unterschiedlich sind wie die Steuersysteme der drei Länder.</p>
+
+      <h3>Deutschland: Strukturen und Prozesse</h3>
+      <p>Der deutsche Markt für Führungskräfte ist groß, vielschichtig und stark strukturiert. Aufsichtsräte, mitbestimmte Unternehmen und tarifgebundene Vergütungsstrukturen prägen die Verhandlungen – insbesondere bei börsennotierten Konzernen. Im Mittelstand wiederum dominieren oft inhabergeführte Strukturen, in denen die persönliche Chemie zur Eigentümerfamilie wichtiger ist als jede Stellenbeschreibung.</p>
+      <p>Charakteristisch ist die Tendenz zu ausführlichen, manchmal langwierigen Auswahlprozessen mit mehreren Gesprächsrunden, strukturierten Interviews und häufig auch Assessment-Verfahren. Wer Geschwindigkeit erwartet, wird enttäuscht – wer Sorgfalt schätzt, fühlt sich verstanden.</p>
+
+      <h3>Österreich: Persönlichkeit vor Prozess</h3>
+      <p>In Österreich verlaufen Auswahlprozesse traditionell persönlicher und beziehungsorientierter. Die Wirtschaft ist mittelständisch geprägt, viele Unternehmen sind in Familienhand. Netzwerke spielen eine größere Rolle als in Deutschland, und Empfehlungen aus dem persönlichen Umfeld haben oft mehr Gewicht als jede Online-Recherche.</p>
+      <p>Wer in Wien, Salzburg oder Linz Führungskräfte sucht, kommt um den persönlichen Kontakt nicht herum. Telefoninterviews ersetzen hier kein Mittagessen – und das Mittagessen ist nicht selten wichtiger als der formale Bewerbungsprozess.</p>
+
+      <h3>Schweiz: Diskretion und Internationalität</h3>
+      <p>Die Schweiz wiederum ist der internationalste der drei Märkte. Zürich, Genf, Basel und Zug ziehen Führungskräfte aus aller Welt an – getrieben durch internationale Konzerne, Pharma- und Finanzindustrie. Englisch ist Geschäftssprache, Französisch und Italienisch je nach Region selbstverständlich.</p>
+      <p>Was im Schweizer Markt besonders auffällt: ein hohes Maß an Diskretion. Wechsel werden selten öffentlich gemacht. LinkedIn-Profile bleiben oft monatelang unverändert, auch wenn längst neue Positionen angetreten wurden. Wer hier sucht, muss Netzwerke nutzen, die nicht öffentlich sichtbar sind.</p>
+
+      <div class="article-quote">
+        „Ein erfolgreicher Wechsel in München ist kein Garant für Erfolg in Zürich – und umgekehrt."
+      </div>
+
+      <h3>Konsequenzen für die Suche</h3>
+      <p>Wer länderübergreifend sucht, braucht mehr als nur Sprachkenntnisse. Erforderlich ist ein Verständnis für lokale Marktdynamiken, regulatorische Besonderheiten – etwa zur Bewilligung von Arbeitskräften in der Schweiz – und die Bereitschaft, in jedem Land mit unterschiedlichen Methoden zu arbeiten. Eine pauschale „DACH-Strategie" funktioniert in der Praxis selten. Was zählt, sind drei abgestimmte, aber individuelle Vorgehensweisen.</p>
+      <a class="article-back" href="#blog-grid-section">← Zurück zur Übersicht</a>
+    </article>
+
+    <!-- ARTIKEL 3 -->
+    <article class="article-full" id="immobilienbranche-wandel">
+      <span class="article-cat">Bau &amp; Immobilien</span>
+      <div class="article-meta">März 2026 · 6 Min. Lesezeit</div>
+      <h2>Die Immobilienbranche im Umbruch – welche Profile jetzt gefragt sind</h2>
+      <p>Die Zeiten, in denen sich Wertsteigerungen in der Immobilienwirtschaft fast von selbst einstellten, sind vorbei. Gestiegene Zinsen, Baukostensteigerungen, regulatorische Anforderungen und ein verändertes Mieterverhalten haben die Branche grundlegend verändert. Das wirkt sich unmittelbar auf das Anforderungsprofil von Führungskräften aus.</p>
+
+      <h3>Vom Dealmaker zum Bestandsmanager</h3>
+      <p>Während in den Jahren des Niedrigzinsumfelds primär Profile gefragt waren, die Transaktionen vorantreiben konnten, verschiebt sich der Schwerpunkt heute deutlich Richtung aktives Bestandsmanagement. Asset Manager mit operativer Stärke, Property Manager mit Digitalisierungskompetenz und Projektentwickler mit Erfahrung in Konversionsthemen sind im Kommen.</p>
+
+      <h3>ESG ist keine Mode mehr</h3>
+      <p>Die EU-Taxonomie, die CSRD-Berichtspflichten und die Vorgaben aus der Energieeinsparverordnung haben dazu geführt, dass ESG-Kompetenz in fast jeder Führungsrolle der Immobilienbranche eine Rolle spielt. Das bedeutet konkret: Auch klassische Asset-Manager-Profile werden heute auf ihre Fähigkeit geprüft, Dekarbonisierungspfade zu entwickeln und Sanierungsbudgets über lange Zeiträume zu planen.</p>
+
+      <h3>Digitalisierung wird operativ</h3>
+      <p>Property Technology, kurz PropTech, ist über das Hype-Stadium hinaus. Mieter erwarten digitale Services, Eigentümer fordern Echtzeit-Reporting, und regulatorische Anforderungen verlangen lückenlose Dokumentation. Führungskräfte, die digitale Tools nicht nur dulden, sondern aktiv einsetzen, haben deutliche Wettbewerbsvorteile am Arbeitsmarkt.</p>
+
+      <div class="article-quote">
+        „Der ideale Kandidat von 2026 versteht Cashflow-Modellierung genauso wie CO₂-Bilanzierung."
+      </div>
+
+      <h3>Was das für die Suche bedeutet</h3>
+      <p>Wer heute eine Führungsposition in der Immobilienwirtschaft besetzt, sollte das Anforderungsprofil ehrlich an die neuen Marktrealitäten anpassen. Pure Transaktionsexpertise reicht selten aus. Gefragt sind hybride Profile, die operative Tiefe mit strategischem Weitblick verbinden – und idealerweise mit einem Verständnis für regulatorische Trends, die in den nächsten Jahren weiter an Bedeutung gewinnen werden.</p>
+      <a class="article-back" href="#blog-grid-section">← Zurück zur Übersicht</a>
+    </article>
+
+    <!-- ARTIKEL 4 -->
+    <article class="article-full" id="international-executive-search">
+      <span class="article-cat">Executive Search</span>
+      <div class="article-meta">März 2026 · 7 Min. Lesezeit</div>
+      <h2>Internationaler Executive Search – wenn die Suche an der Grenze nicht endet</h2>
+      <p>Wer im Top-Management sucht, kommt heute selten umhin, den Suchradius über die eigene Landesgrenze hinaus auszudehnen. Globale Lieferketten, internationale Eigentümerstrukturen und der schiere demografische Druck zwingen Unternehmen, ihre Talent-Pipelines breiter aufzustellen.</p>
+
+      <h3>Die Realität des Cross-Border Recruiting</h3>
+      <p>Ein internationaler Suchauftrag beginnt selten mit der Frage „Wo suchen wir?" – sondern mit „Wer kommt überhaupt in Frage?". Ein Geschäftsführer für eine deutsche Tochter eines französischen Konzerns muss nicht nur fachlich passen, sondern auch in der Lage sein, zwischen unterschiedlichen Unternehmens- und Landeskulturen zu vermitteln. Das ist eine Kompetenz, die sich aus Lebensläufen nur bedingt ablesen lässt.</p>
+
+      <h3>Kulturelle Passung als Erfolgsfaktor</h3>
+      <p>Untersuchungen zur Fluktuation im internationalen Management zeigen seit Jahren das gleiche Bild: Nicht fachliche Defizite sind der häufigste Grund für ein vorzeitiges Scheitern, sondern kulturelle Reibungspunkte. Ein hervorragender Operations Director aus den USA, der die deutsche Konsens- und Mitbestimmungskultur unterschätzt, wird Probleme bekommen – egal wie gut sein Track Record ist.</p>
+
+      <div class="article-quote">
+        „Das beste fachliche Match nützt wenig, wenn die kulturelle Chemie nicht stimmt."
+      </div>
+
+      <h3>Pragmatische Lösungsansätze</h3>
+      <p>Erfolgreiche internationale Suchen setzen auf mehrere Mechanismen:</p>
+      <ul>
+        <li><strong>Strukturierte kulturelle Eignungsdiagnostik:</strong> über die rein fachliche Bewertung hinaus.</li>
+        <li><strong>Realistische Vorgespräche:</strong> Beide Seiten erhalten ein ehrliches Bild des Marktes und der zu erwartenden Herausforderungen.</li>
+        <li><strong>Begleitung in den ersten Monaten:</strong> Onboarding-Coaching reduziert nachweislich die Fluktuationsrate.</li>
+        <li><strong>Lokale Marktkenntnis:</strong> Wer Kandidaten in Madrid sucht, sollte Madrid kennen – nicht nur eine spanische Telefonnummer haben.</li>
+      </ul>
+
+      <h3>Was Unternehmen erwarten dürfen</h3>
+      <p>Internationaler Executive Search ist aufwendiger, langsamer und teurer als eine nationale Suche. Wer das nicht akzeptiert, sollte den Suchradius bewusst einschränken. Wer aber bereit ist, in einen sorgfältigen, mehrstufigen Prozess zu investieren, hat Zugang zu einem Talent-Pool, der für rein nationale Suchen verschlossen bleibt.</p>
+      <a class="article-back" href="#blog-grid-section">← Zurück zur Übersicht</a>
+    </article>
+
+    <!-- ARTIKEL 5 -->
+    <article class="article-full" id="fachkraeftemangel-mittelstand">
+      <span class="article-cat">Branchenaktuelles</span>
+      <div class="article-meta">Februar 2026 · 6 Min. Lesezeit</div>
+      <h2>Fachkräftemangel 2026 – Was den deutschen Mittelstand wirklich bewegt</h2>
+      <p>Kaum ein Thema wird so oft beschworen und so selten konkret behandelt wie der Fachkräftemangel. Pauschalisierungen helfen wenig. Wer im Maschinenbau am Bodensee einen Konstruktionsleiter sucht, kämpft mit anderen Problemen als ein Logistiker im Ruhrgebiet, der Disponenten benötigt.</p>
+
+      <h3>Drei Trends, die wirklich relevant sind</h3>
+      <p>Aus den Gesprächen mit mittelständischen Unternehmen kristallisieren sich drei Entwicklungen heraus, die 2026 besonders ins Gewicht fallen:</p>
+      <ul>
+        <li><strong>Regionale Konzentration:</strong> In Ballungsräumen mit hohem Lebenskostenniveau wird es immer schwieriger, qualifizierte Mitarbeitende zu binden. Gleichzeitig öffnen sich Chancen für Standorte in der zweiten Reihe – das Allgäu, Ostwestfalen, das Saarland.</li>
+        <li><strong>Bindung statt Beschaffung:</strong> Unternehmen, die bestehende Mitarbeiter halten, sparen die hohen Kosten der Neubesetzung. Investitionen in Weiterbildung und Führungsentwicklung amortisieren sich oft schneller als Recruiting-Kampagnen.</li>
+        <li><strong>Stille Wechsel:</strong> Immer mehr Führungskräfte sind grundsätzlich bereit zum Wechsel, ohne aktiv zu suchen. Wer diese Gruppe erreicht, hat einen entscheidenden Vorteil.</li>
+      </ul>
+
+      <h3>Was tatsächlich hilft</h3>
+      <p>Es gibt keine Patentlösung. Aber es gibt Stellhebel, die in vielen Fällen funktionieren: ein klares, ehrliches Arbeitgeberprofil. Realistische Erwartungen an Vergütung und Benefits – orientiert am tatsächlichen Marktniveau, nicht an Wunschdenken. Und vor allem: ein professioneller, respektvoller Auswahlprozess. Kandidaten sprechen über schlechte Erfahrungen, und das schneller, als HR-Abteilungen reagieren können.</p>
+
+      <div class="article-quote">
+        „Der Mittelstand gewinnt nicht durch das größte Budget – sondern durch die ehrlichsten Versprechen."
+      </div>
+
+      <h3>Ausblick</h3>
+      <p>Der Fachkräftemangel wird nicht verschwinden – aber er wird differenzierter. Wer ihn als pauschales Problem behandelt, wird scheitern. Wer ihn als spezifische Herausforderung für die eigene Branche, Region und Unternehmensgröße versteht, kann gezielt gegensteuern.</p>
+      <a class="article-back" href="#blog-grid-section">← Zurück zur Übersicht</a>
+    </article>
+
+    <!-- ARTIKEL 6 -->
+    <article class="article-full" id="projektentwickler-2026">
+      <span class="article-cat">Bau &amp; Immobilien</span>
+      <div class="article-meta">Februar 2026 · 5 Min. Lesezeit</div>
+      <h2>Projektentwickler nach der Zinswende – neue Profile, neue Anforderungen</h2>
+      <p>Die Rolle des Projektentwicklers hat sich in den vergangenen drei Jahren fundamental gewandelt. Was früher als Königsdisziplin der Immobilienbranche galt – Grundstückssicherung, Baurechtschaffung, Verkauf an institutionelle Investoren – funktioniert in der bisherigen Form heute oft nicht mehr.</p>
+
+      <h3>Vom Wachstumsmodus zum Risikomanagement</h3>
+      <p>In der Phase niedriger Zinsen war Projektentwicklung vor allem eine Disziplin des Tempos: Wer schneller war, sicherte sich die besten Grundstücke. Heute zählen andere Tugenden. Vorsichtige Kalkulation, belastbare Kostenplanung, robuste Vertragsgestaltung und ein realistischer Blick auf Vermarktungsrisiken sind wichtiger geworden als jede Schnellschuss-Akquise.</p>
+
+      <h3>Was Headhunter heute beobachten</h3>
+      <p>Im Recruiting für Projektentwicklungspositionen zeigen sich klare Verschiebungen:</p>
+      <ul>
+        <li>Stärkere Nachfrage nach Profilen mit kaufmännischer Tiefe – CFOs der Projektgesellschaft sind in vielen Fällen wichtiger als der charismatische Akquisiteur.</li>
+        <li>Erfahrung mit Bestandsentwicklung und Umnutzung wird höher bewertet als reine Neubaukompetenz.</li>
+        <li>Kandidaten mit Stationen bei Bauträgern <em>und</em> Investoren bieten den breiteren Blick und sind besonders gefragt.</li>
+      </ul>
+
+      <div class="article-quote">
+        „Wer 2018 mit Schnelligkeit überzeugt hat, muss 2026 mit Verlässlichkeit überzeugen."
+      </div>
+
+      <h3>Was das für Arbeitgeber bedeutet</h3>
+      <p>Unternehmen, die jetzt Projektentwickler suchen, sollten ihre Erwartungshaltung anpassen. Die besten Kandidaten haben in den vergangenen Jahren gelernt, mit schwierigen Marktbedingungen umzugehen – und sie wissen das. Sie erwarten von Arbeitgebern realistische Projektpipelines, solide Finanzierungsstrukturen und klare Entscheidungswege. Wer mit nebulösen Visionen und unrealistischen Renditeversprechen wirbt, verliert die Besten an die Wettbewerber.</p>
+      <a class="article-back" href="#blog-grid-section">← Zurück zur Übersicht</a>
+    </article>
+
+    <!-- ARTIKEL 7 -->
+    <article class="article-full" id="diskretion-executive-search">
+      <span class="article-cat">Executive Search</span>
+      <div class="article-meta">Januar 2026 · 6 Min. Lesezeit</div>
+      <h2>Diskretion als Wettbewerbsvorteil – Warum vertrauliche Suchen den Unterschied machen</h2>
+      <p>Die wichtigsten Personalentscheidungen werden selten öffentlich getroffen. Wenn ein Aufsichtsrat einen neuen CEO sucht, ein Familienunternehmen die Nachfolge regelt oder ein Konzern eine Schlüsselposition neu besetzt, ist Diskretion oft wichtiger als jede Reichweite.</p>
+
+      <h3>Warum Stillhalten Wert schafft</h3>
+      <p>Öffentliche Ausschreibungen für Top-Positionen haben einen entscheidenden Nachteil: Sie signalisieren Veränderung – an Mitarbeiter, Kunden, Wettbewerber und Investoren. Gerade in sensiblen Phasen, etwa vor strategischen Neuausrichtungen oder bei laufenden Verhandlungen mit Banken, kann diese Signalwirkung erheblichen Schaden anrichten.</p>
+      <p>Diskrete Suchen erlauben es, Kandidaten zu evaluieren, ohne dass die Vakanz bekannt wird. Sie schützen sowohl die suchende Organisation als auch die Kandidaten, die häufig in festen Anstellungen sind und nicht öffentlich mit einem möglichen Wechsel in Verbindung gebracht werden möchten.</p>
+
+      <h3>Was Diskretion in der Praxis bedeutet</h3>
+      <p>Vertrauliche Suchen erfordern mehrere Schutzmechanismen:</p>
+      <ul>
+        <li>Geheimhaltungsvereinbarungen mit allen Beteiligten.</li>
+        <li>Anonymisierte Projektbeschreibungen in den ersten Gesprächen.</li>
+        <li>Verzicht auf öffentliche Stellenbeschreibungen oder Pressearbeit.</li>
+        <li>Persönliche Treffen statt offener Telefonkonferenzen, wenn sensible Informationen ausgetauscht werden.</li>
+      </ul>
+
+      <div class="article-quote">
+        „Wer Diskretion ernst nimmt, kann sich ihrer nicht einmal rühmen."
+      </div>
+
+      <h3>Wo Diskretion an Grenzen stößt</h3>
+      <p>Auch der diskreteste Prozess kommt irgendwann an den Punkt, an dem Verträge unterzeichnet, Verkündungen vorbereitet und Übergaben geplant werden müssen. Erfahrene Berater begleiten genau diese Phase – mit Kommunikationsplänen, Übergaberegelungen und einer Choreografie, die alle Beteiligten schützt. Diskretion endet nicht mit der Unterschrift. Sie ist ein Versprechen, das auch in den ersten Monaten nach Vertragsabschluss gehalten werden muss.</p>
+      <a class="article-back" href="#blog-grid-section">← Zurück zur Übersicht</a>
+    </article>
+
+    <!-- ARTIKEL 8 -->
+    <article class="article-full" id="esg-baubranche">
+      <span class="article-cat">Branchenaktuelles</span>
+      <div class="article-meta">Januar 2026 · 6 Min. Lesezeit</div>
+      <h2>ESG, CSRD &amp; Co. – Welche neuen Führungsrollen die Regulatorik schafft</h2>
+      <p>Die regulatorische Welle, die seit 2023 über die europäische Wirtschaft rollt, hinterlässt nicht nur Spuren in Reportingsystemen und Compliance-Prozessen – sie verändert die Organigramme. Funktionen, die vor wenigen Jahren noch unbekannt waren, sind heute Schlüsselpositionen.</p>
+
+      <h3>Welche Rollen jetzt entstehen</h3>
+      <ul>
+        <li><strong>Chief Sustainability Officer (CSO):</strong> Auf C-Level-Ebene angesiedelt, oft direkt der Geschäftsführung berichtend. Verantwortlich für die strategische ESG-Ausrichtung des Gesamtunternehmens.</li>
+        <li><strong>ESG-Manager:</strong> Operativ verantwortlich für die Erhebung, Konsolidierung und Verifizierung der Nachhaltigkeitsdaten – häufig an der Schnittstelle zwischen Controlling und Strategie.</li>
+        <li><strong>Head of Decarbonization:</strong> Steuert konkret die Reduktion des CO₂-Fußabdrucks – ein Profil mit technischem und strategischem Anspruch.</li>
+        <li><strong>CSRD-Reporting Lead:</strong> Spezialisten für die neue europäische Berichterstattung, oft mit Wirtschaftsprüfer-Hintergrund.</li>
+      </ul>
+
+      <h3>Wo die größten Engpässe liegen</h3>
+      <p>Der Markt für ESG-Talente ist eng. Die Zahl der Stellenangebote wächst schneller als die der ausgebildeten Spezialisten. Besonders gefragt sind Quereinsteiger aus Wirtschaftsprüfung, Strategieberatung und – zunehmend – aus dem operativen Geschäft, die sich ESG-Kompetenz nachträglich aufgebaut haben.</p>
+
+      <div class="article-quote">
+        „Die Regulatorik schafft Stellen schneller, als Hochschulen Spezialisten ausbilden können."
+      </div>
+
+      <h3>Empfehlung für Unternehmen</h3>
+      <p>Wer heute eine ESG-Funktion neu besetzt, sollte zwei Dinge gleichzeitig tun: kurzfristig auf erfahrene Spezialisten aus dem externen Markt zugreifen – und langfristig interne Talente entwickeln. Pure Externe Lösungen sind teuer und volatil. Pure interne Aufbauten dauern zu lange. Die Mischung macht den Unterschied.</p>
+      <a class="article-back" href="#blog-grid-section">← Zurück zur Übersicht</a>
+    </article>
+
+    <!-- ARTIKEL 9 -->
+    <article class="article-full" id="interim-management">
+      <span class="article-cat">Branchenaktuelles</span>
+      <div class="article-meta">Dezember 2025 · 5 Min. Lesezeit</div>
+      <h2>Interim Management vs. Festanstellung – Wann welche Lösung wirklich passt</h2>
+      <p>Die Debatte „Interim oder Festanstellung?" wird oft ideologisch geführt. Dabei lohnt sich ein nüchterner Blick: Beide Modelle haben klare Stärken – und klare Grenzen.</p>
+
+      <h3>Wann Interim die richtige Wahl ist</h3>
+      <ul>
+        <li><strong>Akute Vakanzen:</strong> Wenn eine Schlüsselposition unerwartet frei wird und der Geschäftsbetrieb nicht warten kann.</li>
+        <li><strong>Klar abgegrenzte Projekte:</strong> Restrukturierungen, Carve-outs, M&amp;A-Integrationen oder ERP-Migrationen.</li>
+        <li><strong>Krisensituationen:</strong> Wenn ein erfahrener Sanierer benötigt wird, der schnell entscheiden kann und nicht in interne Politik verstrickt ist.</li>
+        <li><strong>Wissenstransfer:</strong> Wenn erfahrene Profile gebraucht werden, um Nachwuchskräfte einzuarbeiten.</li>
+      </ul>
+
+      <h3>Wann Festanstellung die bessere Lösung ist</h3>
+      <ul>
+        <li><strong>Strategische Langzeitverantwortung:</strong> Wenn Beziehungsaufbau zu Kunden, Lieferanten und Mitarbeitern zentral ist.</li>
+        <li><strong>Kulturelle Verankerung:</strong> Wenn die Position prägend für die Unternehmenskultur sein soll.</li>
+        <li><strong>Nachfolgelinien:</strong> Wenn die Position Teil einer geplanten Entwicklung in Richtung Geschäftsführung ist.</li>
+      </ul>
+
+      <div class="article-quote">
+        „Interim Manager und Festangestellte sind keine Konkurrenten – sie spielen unterschiedliche Positionen."
+      </div>
+
+      <h3>Hybride Modelle gewinnen an Bedeutung</h3>
+      <p>Zunehmend etabliert sich ein dritter Weg: Interim-Lösungen mit der Option auf Festanstellung. Beide Seiten lernen sich kennen, der Druck einer langfristigen Verpflichtung entfällt zunächst. Wenn die Chemie stimmt und die Ergebnisse überzeugen, kann ein Übergang in eine permanente Position erfolgen. Dieses Modell entlastet Personalentscheidungen erheblich – und reduziert Fehlbesetzungsrisiken.</p>
+      <a class="article-back" href="#blog-grid-section">← Zurück zur Übersicht</a>
+    </article>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="blog-cta">
+  <div class="cta-inner">
+    <h2>Sie suchen einen vertraulichen Austausch?</h2>
+    <p>Ob konkrete Vakanz, strategische Personalplanung oder einfach ein erster fachlicher Sparringspartner – wir freuen uns auf den Austausch.</p>
+    <a href="index.html#kontakt" class="btn-primary">Gespräch anfragen →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a class="footer-logo" href="index.html">Altura <b>·</b> Consulting</a>
+  <div class="footer-copy">© 2026 Altura Consulting GmbH · Wangen im Allgäu</div>
+  <div class="footer-links">
+    <a href="#">Impressum</a>
+    <a href="#">Datenschutz</a>
+  </div>
+</footer>
+
+<script>
+  // Burger
+  const burger = document.getElementById('nav-burger');
+  const navLinks = document.getElementById('nav-links');
+  burger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    burger.classList.toggle('open');
+  });
+
+  // Nav shrink on scroll
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 30) {
+      nav.style.padding = '.6rem 3rem';
+    } else {
+      nav.style.padding = '1rem 3rem';
+    }
+  });
+
+  // Reveal animations
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // Filter functionality
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const blogCards = document.querySelectorAll('.blog-card');
+
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.getAttribute('data-filter');
+
+      // Toggle active state
+      filterButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      // Filter cards
+      blogCards.forEach(card => {
+        const cat = card.getAttribute('data-cat');
+        if (filter === 'all' || cat === filter) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

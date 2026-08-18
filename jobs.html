@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jobs &amp; Karriere – Altura Consulting | Aktuelle Vakanzen im DACH-Raum</title>
+  <meta name="description" content="Aktuelle Vakanzen und Karrieremöglichkeiten bei Altura Consulting. Finden Sie Ihre nächste Führungsposition in der Bau- und Immobilienbranche, im Executive Search und im DACH-Raum."/>
+  <meta name="keywords" content="Jobs Personalberatung, Karriere DACH, Executive Search Stellen, Bauindustrie Jobs, Immobilien Karriere, Stellenangebote Wangen"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=Syne+Mono&display=swap" rel="stylesheet">
+  <style>
+    /* ── RESET ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Syne', sans-serif;
+      background: #f2f2f0;
+      color: #1c1c1c;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    #main-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 3rem;
+      background: rgba(242,242,240,0.96);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid #e0e0dc;
+      transition: padding .3s;
+    }
+    .nav-logo {
+      font-size: 14px; font-weight: 700; letter-spacing: .22em;
+      text-transform: uppercase; color: #1c1c1c; text-decoration: none;
+    }
+    .nav-logo b { color: #6b8e6b; font-weight: 700; }
+    .nav-links { display: flex; gap: 2rem; align-items: center; list-style: none; }
+    .nav-links a {
+      font-size: 11px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase;
+      text-decoration: none; color: #555; transition: color .2s; white-space: nowrap;
+    }
+    .nav-links a:hover { color: #1a3a6b; }
+    .nav-links a.active { color: #1a3a6b; }
+    .nav-links .nav-cta {
+      background: #1a3a6b; color: #fff !important;
+      padding: .4rem 1.1rem; transition: background .2s;
+    }
+    .nav-links .nav-cta:hover { background: #142d55; }
+    .nav-dropdown { position: relative; }
+    .dropdown-menu {
+      position: absolute; top: calc(100% + .8rem); left: 50%;
+      transform: translateX(-50%) translateY(6px);
+      background: #fff; border: 1px solid #e0e0dc;
+      list-style: none; min-width: 270px;
+      opacity: 0; visibility: hidden; pointer-events: none;
+      transition: opacity .2s, transform .2s, visibility .2s;
+    }
+    .nav-dropdown:hover .dropdown-menu {
+      opacity: 1; visibility: visible; pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+    }
+    .dropdown-menu li { width: 100%; }
+    .dropdown-menu a {
+      display: block; padding: .9rem 1.2rem;
+      font-size: 10.5px; letter-spacing: .14em; color: #333;
+      border-bottom: 1px solid #f0f0ec;
+    }
+    .dropdown-menu li:last-child a { border-bottom: none; }
+    .dropdown-menu a:hover { background: #f7f7f4; color: #1a3a6b; }
+    #nav-burger {
+      display: none; flex-direction: column; gap: 4px; cursor: pointer;
+      background: none; border: none; padding: 0;
+    }
+    #nav-burger span { width: 22px; height: 2px; background: #1c1c1c; transition: transform .3s, opacity .3s; }
+    #nav-burger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    #nav-burger.open span:nth-child(2) { opacity: 0; }
+    #nav-burger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+    /* ── HERO JOBS ── */
+    #jobs-hero {
+      background: #1a2535; color: #f2f2f0;
+      padding: 10rem 3rem 5rem;
+      position: relative; overflow: hidden;
+    }
+    #jobs-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 70% 40%, rgba(107,142,107,.18) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .jobs-hero-inner {
+      position: relative; z-index: 1; max-width: 1100px;
+    }
+    .jobs-hero-tag {
+      font-size: 11px; font-weight: 600; letter-spacing: .28em;
+      text-transform: uppercase; color: #9bb89a; margin-bottom: 1.4rem;
+    }
+    .jobs-hero-title {
+      font-size: clamp(38px, 5vw, 64px); font-weight: 700;
+      letter-spacing: -.03em; line-height: 1.02; margin-bottom: 1.5rem;
+    }
+    .jobs-hero-title span { color: #9bb89a; }
+    .jobs-hero-sub {
+      font-size: 15px; color: rgba(242,242,240,.7); max-width: 640px;
+      line-height: 1.7; font-weight: 400;
+    }
+
+    /* ── INFO BAND ── */
+    #jobs-info {
+      background: #e8e8e4; padding: 3rem; border-bottom: 1px solid #d8d8d2;
+    }
+    .info-inner {
+      max-width: 1400px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+    }
+    .info-block { display: flex; flex-direction: column; gap: .5rem; }
+    .info-num {
+      font-family: 'Syne Mono', monospace;
+      font-size: 11px; font-weight: 600; letter-spacing: .2em;
+      color: #6b8e6b;
+    }
+    .info-block h3 {
+      font-size: 17px; font-weight: 600; color: #1c1c1c;
+      letter-spacing: -.01em;
+    }
+    .info-block p {
+      font-size: 13px; line-height: 1.65; color: #555; font-weight: 400;
+    }
+
+    /* ── JOB PORTAL EMBED ── */
+    #jobs-portal {
+      background: #f2f2f0;
+      padding: 4rem 3rem 5rem;
+    }
+    .portal-header {
+      max-width: 1400px; margin: 0 auto 2.5rem;
+    }
+    .section-label {
+      font-size: 11px; font-weight: 600; letter-spacing: .28em;
+      text-transform: uppercase; color: #6b8e6b; margin-bottom: .8rem;
+    }
+    .section-h {
+      font-size: clamp(28px, 3.2vw, 38px); font-weight: 700;
+      letter-spacing: -.025em; color: #1c1c1c; margin-bottom: 1rem; line-height: 1.05;
+    }
+    .portal-header p {
+      font-size: 14px; color: #555; line-height: 1.7; max-width: 700px;
+      font-weight: 400;
+    }
+    .portal-frame {
+      max-width: 1400px; margin: 0 auto;
+      background: #fff; border: 1px solid #e0e0dc;
+      overflow: hidden;
+    }
+    /* Starhunter iframe sizing */
+    .iframe-wrapper {
+      width: 100%;
+      height: 1200px;
+      max-height: 1200px;
+    }
+    #starhunter-job-portal-iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    /* ── INITIATIV-BLOCK ── */
+    #jobs-initiativ {
+      background: #1a2535; color: #f2f2f0;
+      padding: 5rem 3rem;
+    }
+    .initiativ-inner {
+      max-width: 900px; margin: 0 auto;
+      display: grid; grid-template-columns: 1.3fr 1fr; gap: 3rem;
+      align-items: center;
+    }
+    .initiativ-text .section-label { color: #9bb89a; }
+    .initiativ-text h2 {
+      font-size: clamp(26px, 3vw, 34px); font-weight: 700;
+      letter-spacing: -.025em; color: #f2f2f0;
+      margin-bottom: 1.2rem; line-height: 1.1;
+    }
+    .initiativ-text p {
+      font-size: 14.5px; color: rgba(242,242,240,.7);
+      line-height: 1.75; margin-bottom: 1.4rem; font-weight: 400;
+    }
+    .initiativ-cta { display: flex; flex-direction: column; gap: .8rem; }
+    .btn-primary {
+      display: inline-flex; align-items: center; justify-content: center; gap: .7rem;
+      background: #6b8e6b; color: #fff;
+      padding: 1rem 1.6rem; font-size: 11px; font-weight: 600;
+      letter-spacing: .22em; text-transform: uppercase;
+      text-decoration: none; transition: background .25s;
+      font-family: 'Syne', sans-serif;
+    }
+    .btn-primary:hover { background: #5a7c5a; }
+    .btn-secondary {
+      display: inline-flex; align-items: center; justify-content: center; gap: .6rem;
+      background: transparent; color: #f2f2f0;
+      padding: 1rem 1.6rem; font-size: 11px; font-weight: 600;
+      letter-spacing: .22em; text-transform: uppercase;
+      border: 1px solid rgba(242,242,240,.3); text-decoration: none;
+      transition: background .25s, border-color .25s;
+      font-family: 'Syne', sans-serif;
+    }
+    .btn-secondary:hover { background: rgba(242,242,240,.06); border-color: rgba(242,242,240,.6); }
+
+    /* ── PROZESS BLOCK ── */
+    #jobs-prozess {
+      background: #f2f2f0; padding: 5rem 3rem;
+    }
+    .prozess-inner { max-width: 1100px; margin: 0 auto; }
+    .prozess-list {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem;
+      margin-top: 2rem;
+    }
+    .prozess-card {
+      background: #fff; border: 1px solid #e0e0dc;
+      padding: 1.8rem 1.5rem 1.6rem;
+      transition: border-color .25s, transform .25s;
+    }
+    .prozess-card:hover { border-color: #1a3a6b; transform: translateY(-3px); }
+    .prozess-num {
+      font-family: 'Syne Mono', monospace;
+      font-size: 11px; font-weight: 600; letter-spacing: .2em;
+      color: #6b8e6b; margin-bottom: 1rem;
+    }
+    .prozess-card h3 {
+      font-size: 15.5px; font-weight: 600; color: #1c1c1c;
+      margin-bottom: .7rem; letter-spacing: -.01em;
+    }
+    .prozess-card p {
+      font-size: 12.5px; line-height: 1.6; color: #666; font-weight: 400;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #141e2d; padding: 2rem 3rem;
+      display: grid; grid-template-columns: 1fr 1fr 1fr; align-items: center;
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+    .footer-logo { font-size: 13px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: #f2f2f0; text-decoration: none; }
+    .footer-logo b { color: #6b8e6b; }
+    .footer-copy { font-size: 10px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.35); text-align: center; }
+    .footer-links { display: flex; gap: 1.5rem; justify-content: flex-end; }
+    .footer-links a { font-size: 10px; font-weight: 500; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.45); text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: #6b8e6b; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      #jobs-hero { padding: 8rem 2rem 4rem; }
+      #jobs-info { padding: 2.5rem 2rem; }
+      .info-inner { grid-template-columns: 1fr; gap: 1.8rem; }
+      #jobs-portal { padding: 3.5rem 2rem 4rem; }
+      .iframe-wrapper { height: 1000px; }
+      #jobs-initiativ { padding: 4rem 2rem; }
+      .initiativ-inner { grid-template-columns: 1fr; gap: 2rem; }
+      #jobs-prozess { padding: 4rem 2rem; }
+      .prozess-list { grid-template-columns: 1fr 1fr; }
+      footer { grid-template-columns: 1fr; gap: 1rem; text-align: center; padding: 2rem; }
+      .footer-links { justify-content: center; }
+    }
+    @media (max-width: 768px) {
+      #main-nav { padding: .9rem 1.5rem !important; }
+      .nav-links {
+        display: none; flex-direction: column; gap: 0;
+        position: absolute; top: 100%; left: 0; right: 0;
+        background: rgba(242,242,240,.98); border-bottom: 1px solid #e0e0dc;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li { width: 100%; }
+      .nav-links li a { display: block; padding: 1rem 1.5rem; border-bottom: 1px solid #e0e0dc; }
+      .nav-dropdown .dropdown-menu {
+        position: static; transform: none; opacity: 1; visibility: visible;
+        pointer-events: auto; min-width: 0; background: #f7f7f4; border: none;
+      }
+      #nav-burger { display: flex; }
+      #jobs-hero { padding: 7rem 1.5rem 3rem; }
+      #jobs-portal { padding: 3rem 1rem 3.5rem; }
+      .iframe-wrapper { height: 900px; }
+      .prozess-list { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav id="main-nav">
+  <a class="nav-logo" href="index.html">Altura <b>·</b> Consulting</a>
+  <button id="nav-burger" aria-label="Menü">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html#ueber">Über uns</a></li>
+    <li class="nav-dropdown">
+      <a href="index.html#leistungen">Leistungen ▾</a>
+      <ul class="dropdown-menu">
+        <li><a href="executive-search.html">Executive Search &amp; Recruiting</a></li>
+        <li><a href="eignungsdiagnostik.html">Eignungsdiagnostik &amp; Potenzialanalysen</a></li>
+        <li><a href="employer-branding.html">Employer Branding &amp; Arbeitgeberidentität</a></li>
+      </ul>
+    </li>
+    <li><a href="index.html#prozess">Prozess</a></li>
+    <li><a href="index.html#team">Team</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="jobs.html" class="active">Jobs</a></li>
+    <li><a href="index.html#kontakt" class="nav-cta">Kontakt</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="jobs-hero">
+  <div class="jobs-hero-inner">
+    <div class="jobs-hero-tag">Karriere · Vakanzen · DACH</div>
+    <h1 class="jobs-hero-title">Ihre nächste<br><span>Position</span> wartet.</h1>
+    <p class="jobs-hero-sub">
+      Aktuelle Führungs- und Fachpositionen aus unseren Mandaten in der Bau- und Immobilienbranche, im Executive Search und darüber hinaus. Diskret vermittelt, persönlich begleitet – im gesamten DACH-Raum.
+    </p>
+  </div>
+</section>
+
+<!-- INFO BAND -->
+<section id="jobs-info">
+  <div class="info-inner">
+    <div class="info-block">
+      <span class="info-num">01 · Diskret</span>
+      <h3>Vertrauliche Bewerbung</h3>
+      <p>Ihre Bewerbung wird ausschließlich nach Rücksprache mit Ihnen an unsere Mandanten weitergeleitet. Keine Daten verlassen unser Haus ohne Ihre ausdrückliche Zustimmung.</p>
+    </div>
+    <div class="info-block">
+      <span class="info-num">02 · Persönlich</span>
+      <h3>Echte Gespräche, nicht nur Lebensläufe</h3>
+      <p>Wir nehmen uns Zeit für ein persönliches Kennenlernen. Erst dann entscheiden wir gemeinsam, ob ein Mandat für Sie passt – und nicht nur umgekehrt.</p>
+    </div>
+    <div class="info-block">
+      <span class="info-num">03 · Begleitend</span>
+      <h3>Vom Erstgespräch bis zum Onboarding</h3>
+      <p>Wir begleiten Sie durch den gesamten Prozess: vom ersten Kontakt über Vertragsverhandlungen bis in die ersten Wochen Ihrer neuen Position.</p>
+    </div>
+  </div>
+</section>
+
+<!-- JOB PORTAL EMBED -->
+<section id="jobs-portal">
+  <div class="portal-header">
+    <div class="section-label">Aktuelle Vakanzen</div>
+    <div class="section-h">Unsere offenen Positionen.</div>
+    <p>Im Folgenden finden Sie alle aktuell aktiven Mandate. Klicken Sie auf eine Position für Details zu Aufgaben, Anforderungen und Bewerbungsmöglichkeiten.</p>
+  </div>
+  <div class="portal-frame">
+    <div data-container="starhunter-job-portal-iframe">
+      <div class="iframe-wrapper">
+        <iframe id="starhunter-job-portal-iframe"
+                src="https://rs.starhunter.software/job-portal/overview"
+                scrolling="yes"
+                allow="clipboard-read *; clipboard-write *;"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Altura Consulting Stellenangebote">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INITIATIVBEWERBUNG -->
+<section id="jobs-initiativ">
+  <div class="initiativ-inner">
+    <div class="initiativ-text">
+      <div class="section-label">Initiativbewerbung</div>
+      <h2>Keine passende Position dabei?</h2>
+      <p>Viele unserer Mandate werden nicht öffentlich ausgeschrieben. Wenn Sie eine erfahrene Führungs- oder Fachkraft sind und einen Wechsel in Erwägung ziehen, freuen wir uns über Ihre vertrauliche Initiativbewerbung.</p>
+      <p>Wir nehmen Ihre Unterlagen in unser Netzwerk auf und melden uns, sobald ein passendes Mandat verfügbar ist – diskret und ohne Verpflichtung.</p>
+    </div>
+    <div class="initiativ-cta">
+      <a href="index.html#kontakt" class="btn-primary">Initiativbewerbung senden →</a>
+      <a href="index.html#team" class="btn-secondary">Direkt zum Ansprechpartner</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROZESS -->
+<section id="jobs-prozess">
+  <div class="prozess-inner">
+    <div class="section-label">Was Sie erwartet</div>
+    <div class="section-h">Vier Schritte zur neuen Position.</div>
+    <div class="prozess-list">
+      <div class="prozess-card">
+        <div class="prozess-num">Schritt 01</div>
+        <h3>Erstgespräch</h3>
+        <p>Wir lernen Sie kennen und besprechen Ihre Vorstellungen, Erfahrungen und Ziele – persönlich oder per Video.</p>
+      </div>
+      <div class="prozess-card">
+        <div class="prozess-num">Schritt 02</div>
+        <h3>Mandantenmatch</h3>
+        <p>Wir gleichen Ihr Profil mit unseren Mandaten ab und stellen Sie nur nach Ihrer Zustimmung vor.</p>
+      </div>
+      <div class="prozess-card">
+        <div class="prozess-num">Schritt 03</div>
+        <h3>Begleitung im Prozess</h3>
+        <p>Wir begleiten Sie durch alle Interviewrunden und unterstützen bei der Vorbereitung und Verhandlung.</p>
+      </div>
+      <div class="prozess-card">
+        <div class="prozess-num">Schritt 04</div>
+        <h3>Onboarding</h3>
+        <p>Auch nach der Zusage bleiben wir Ihr Ansprechpartner – für einen erfolgreichen Start in der neuen Rolle.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a class="footer-logo" href="index.html">Altura <b>·</b> Consulting</a>
+  <div class="footer-copy">© 2026 Altura Consulting GmbH · Wangen im Allgäu</div>
+  <div class="footer-links">
+    <a href="#">Impressum</a>
+    <a href="#">Datenschutz</a>
+  </div>
+</footer>
+
+<script>
+  // Burger
+  const burger = document.getElementById('nav-burger');
+  const navLinks = document.getElementById('nav-links');
+  burger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    burger.classList.toggle('open');
+  });
+
+  // Nav shrink on scroll
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 30) {
+      nav.style.padding = '.6rem 3rem';
+    } else {
+      nav.style.padding = '1rem 3rem';
+    }
+  });
+</script>
+
+</body>
+</html>
