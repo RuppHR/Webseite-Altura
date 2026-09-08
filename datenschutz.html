@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Datenschutz – Altura Consulting</title>
+  <meta name="description" content="Datenschutzerklärung gemäß DSGVO zu Altura Consulting — Informationen zur Verarbeitung personenbezogener Daten."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300;9..144,400;9..144,500;9..144,600&family=Syne:wght@400;500;600;700&family=Syne+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0b0d12; --ink-2: #12151c; --ink-3: #1a1e26;
+      --paper: #eae5da; --paper-2: rgba(234, 229, 218, 0.62); --paper-3: rgba(234, 229, 218, 0.32);
+      --gold: #b8a071; --gold-soft: rgba(184, 160, 113, 0.55);
+      --hairline: rgba(234, 229, 218, 0.12); --hairline-strong: rgba(234, 229, 218, 0.28);
+      --f-display: 'Fraunces', Georgia, serif;
+      --f-body: 'Syne', -apple-system, system-ui, sans-serif;
+      --f-mono: 'Syne Mono', 'Menlo', monospace;
+      --ease: cubic-bezier(.2, .8, .2, 1);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--f-body); background: var(--ink); color: var(--paper); overflow-x: hidden; line-height: 1.55; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+    a { color: inherit; text-decoration: none; }
+
+    body::after {
+      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 300;
+      opacity: .08; mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+    }
+
+    /* NAV */
+    #nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.4rem 3rem; transition: padding .4s var(--ease), background .4s var(--ease), backdrop-filter .4s var(--ease); }
+    #nav.scrolled { padding: .9rem 3rem; background: rgba(11, 13, 18, 0.72); backdrop-filter: blur(18px) saturate(140%); border-bottom: 1px solid var(--hairline); }
+    .logo { font-family: var(--f-body); font-size: 12px; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--paper); }
+    .logo em { font-family: var(--f-display); font-style: italic; font-weight: 400; color: var(--gold); text-transform: none; letter-spacing: 0; font-size: 14px; padding: 0 .25em; display: inline-block; vertical-align: middle; line-height: 1; transform: translateY(-2px); }
+    .nav-menu { display: flex; gap: 2.2rem; list-style: none; align-items: center; }
+    .nav-menu a { font-size: 10.5px; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; color: var(--paper-2); transition: color .3s var(--ease); }
+    .nav-menu a:hover { color: var(--paper); }
+    .nav-cta { padding: .55rem 1.2rem; border: 1px solid var(--paper-3); color: var(--paper) !important; transition: background .3s var(--ease), border-color .3s var(--ease); }
+    .nav-cta:hover { background: var(--paper); color: var(--ink) !important; border-color: var(--paper); }
+    #burger { display: none; background: none; border: 0; flex-direction: column; gap: 5px; cursor: pointer; }
+    #burger span { width: 22px; height: 1px; background: var(--paper); transition: transform .3s, opacity .3s; }
+    #burger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    #burger.open span:nth-child(2) { opacity: 0; }
+    #burger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+    /* HERO */
+    #hero { padding: 9rem 3rem 4rem; border-bottom: 1px solid var(--hairline); }
+    .hero-inner { max-width: 1000px; margin: 0 auto; }
+    .hero-back { display: inline-flex; align-items: center; gap: .5rem; font-family: var(--f-mono); font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); margin-bottom: 2.2rem; transition: color .3s var(--ease); }
+    .hero-back:hover { color: var(--paper); }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 1rem; font-family: var(--f-mono); font-size: 11px; letter-spacing: .2em; color: var(--gold); margin-bottom: 1.4rem; text-transform: uppercase; }
+    .hero-eyebrow::before { content: ''; width: 30px; height: 1px; background: var(--gold); }
+    .hero-title { font-family: var(--f-display); font-weight: 300; font-size: clamp(38px, 5.4vw, 72px); line-height: 0.98; letter-spacing: -.03em; color: var(--paper); font-variation-settings: "opsz" 144; margin-bottom: 1rem; }
+    .hero-title em { font-style: italic; font-weight: 400; color: var(--gold); font-variation-settings: "opsz" 144, "SOFT" 100; }
+    .hero-sub { font-size: 14px; line-height: 1.75; color: var(--paper-2); max-width: 620px; font-weight: 400; font-family: var(--f-mono); letter-spacing: .04em; }
+
+    /* TOC */
+    #toc { background: var(--ink-2); padding: 3rem; border-bottom: 1px solid var(--hairline); }
+    .toc-inner { max-width: 1000px; margin: 0 auto; }
+    .toc-title { font-family: var(--f-mono); font-size: 11px; letter-spacing: .28em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.6rem; }
+    .toc-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: .8rem 2.5rem; list-style: none; }
+    .toc-list a { display: flex; gap: .8rem; font-size: 13.5px; line-height: 1.55; color: var(--paper-2); padding: .5rem 0; transition: color .25s; border-bottom: 1px solid var(--hairline); }
+    .toc-list a:hover { color: var(--paper); }
+    .toc-num { font-family: var(--f-mono); font-size: 11px; letter-spacing: .1em; color: var(--gold); min-width: 24px; }
+
+    /* CONTENT */
+    #content { padding: 5rem 3rem 6rem; background: var(--ink); }
+    .content-inner { max-width: 780px; margin: 0 auto; }
+    .content-inner section { padding: 2.5rem 0; border-top: 1px solid var(--hairline); scroll-margin-top: 100px; }
+    .content-inner section:first-child { border-top: 0; padding-top: 0; }
+    .content-inner section:last-child { padding-bottom: 0; }
+    .content-inner h2 {
+      font-family: var(--f-display); font-weight: 400;
+      font-size: clamp(22px, 2.4vw, 28px); letter-spacing: -.015em;
+      color: var(--paper); margin-bottom: 1.4rem;
+      font-variation-settings: "opsz" 60;
+      display: flex; align-items: baseline; gap: 1rem;
+    }
+    .content-inner h2 em { font-style: italic; color: var(--gold); font-variation-settings: "opsz" 60, "SOFT" 100; }
+    .h2-num { font-family: var(--f-mono); font-size: 11px; letter-spacing: .18em; color: var(--gold); font-weight: 500; min-width: 32px; }
+    .content-inner p, .content-inner li {
+      font-size: 15px; line-height: 1.75; color: var(--paper-2);
+      margin-bottom: 1rem; font-weight: 400;
+    }
+    .content-inner p:last-child, .content-inner li:last-child { margin-bottom: 0; }
+    .content-inner strong { color: var(--paper); font-weight: 600; }
+    .content-inner em { color: var(--gold); font-style: normal; }
+    .content-inner a { color: var(--gold); border-bottom: 1px solid var(--gold-soft); transition: color .3s, border-color .3s; padding-bottom: 1px; }
+    .content-inner a:hover { color: var(--paper); border-color: var(--paper); }
+    .content-inner ul { margin: .5rem 0 1.4rem 1.4rem; }
+    .content-inner ul li { margin-bottom: .5rem; }
+    .content-address {
+      font-family: var(--f-mono); font-size: 13.5px; letter-spacing: .02em;
+      color: var(--paper); line-height: 1.9; margin: 1rem 0 1.4rem;
+      padding: 1.4rem 1.6rem; border-left: 2px solid var(--gold);
+      background: var(--ink-2);
+    }
+    .content-address strong { color: var(--paper); font-family: var(--f-display); font-size: 16px; font-weight: 400; font-variation-settings: "opsz" 60; letter-spacing: -.01em; display: block; margin-bottom: .3rem; }
+    .callout {
+      background: var(--ink-2); padding: 1rem 1.4rem; margin: 1rem 0;
+      border-left: 2px solid var(--gold-soft);
+      font-size: 14px; line-height: 1.7; color: var(--paper-2);
+    }
+    .callout strong { color: var(--gold); font-family: var(--f-mono); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; display: inline-block; margin-right: .4rem; font-weight: 500; }
+    .note { font-style: italic; font-size: 13.5px; color: var(--paper-3); margin-top: .8rem; }
+    .placeholder {
+      display: inline-block; padding: .1rem .5rem;
+      background: rgba(184, 160, 113, .15); color: var(--gold);
+      font-family: var(--f-mono); font-size: 12.5px; letter-spacing: .04em;
+      border: 1px dashed var(--gold-soft);
+    }
+    .content-stand {
+      margin-top: 3rem; padding-top: 2rem;
+      border-top: 1px solid var(--hairline);
+      font-family: var(--f-mono); font-size: 11px;
+      letter-spacing: .22em; text-transform: uppercase;
+      color: var(--paper-3);
+    }
+
+    /* FOOTER */
+    footer { background: var(--ink); padding: 3rem; border-top: 1px solid var(--hairline); display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 2rem; }
+    .foot-logo { font-family: var(--f-body); font-size: 11px; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; }
+    .foot-logo em { font-family: var(--f-display); font-style: italic; color: var(--gold); text-transform: none; letter-spacing: 0; font-size: 13px; padding: 0 .25em; display: inline-block; vertical-align: middle; line-height: 1; transform: translateY(-1px); }
+    .foot-copy { font-family: var(--f-mono); font-size: 10px; letter-spacing: .15em; color: var(--paper-3); text-transform: uppercase; text-align: center; }
+    .foot-links { display: flex; gap: 1.5rem; justify-content: flex-end; }
+    .foot-links a { font-family: var(--f-mono); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--paper-3); transition: color .3s var(--ease); }
+    .foot-links a:hover { color: var(--paper); }
+    .foot-links a.active { color: var(--gold); }
+
+    @media (max-width: 1024px) {
+      #nav { padding: 1.2rem 2rem; }
+      #nav.scrolled { padding: .8rem 2rem; }
+      #hero { padding: 7rem 2rem 3rem; }
+      #toc { padding: 2.5rem 2rem; }
+      .toc-list { grid-template-columns: 1fr; gap: .3rem; }
+      #content { padding: 4rem 2rem 5rem; }
+      footer { grid-template-columns: 1fr; text-align: center; gap: 1.2rem; }
+      .foot-links { justify-content: center; }
+    }
+    @media (max-width: 720px) {
+      .nav-menu { display: none; flex-direction: column; gap: 0; position: absolute; top: 100%; left: 0; right: 0; background: rgba(11,13,18,.96); backdrop-filter: blur(14px); border-bottom: 1px solid var(--hairline); }
+      .nav-menu.open { display: flex; }
+      .nav-menu li { width: 100%; text-align: center; }
+      .nav-menu li a { display: block; padding: 1.2rem 1.5rem; border-bottom: 1px solid var(--hairline); }
+      #burger { display: flex; }
+      #hero { padding: 6rem 1.5rem 2.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="nav">
+  <a class="logo" href="index-cinematic.html">Altura<em>·</em>Consulting</a>
+  <button id="burger" aria-label="Menü"><span></span><span></span><span></span></button>
+  <ul class="nav-menu" id="nav-menu">
+    <li><a href="index-cinematic.html#ueber">Über</a></li>
+    <li><a href="index-cinematic.html#leistungen">Leistungen</a></li>
+    <li><a href="index-cinematic.html#prozess">Prozess</a></li>
+    <li><a href="index-cinematic.html#team">Team</a></li>
+    <li><a href="blog.html">Journal</a></li>
+    <li><a href="jobs-cinematic.html">Jobs</a></li>
+    <li><a href="index-cinematic.html#kontakt" class="nav-cta">Kontakt</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <div class="hero-inner">
+    <a class="hero-back" href="index-cinematic.html">← Zur Startseite</a>
+    <div class="hero-eyebrow">Rechtliches</div>
+    <h1 class="hero-title"><em>Datenschutz-</em>erklärung.</h1>
+    <p class="hero-sub">Informationen zur Verarbeitung personenbezogener Daten gemäß Art. 13 und 14 DSGVO.</p>
+  </div>
+</section>
+
+<section id="toc">
+  <div class="toc-inner">
+    <div class="toc-title">Inhaltsverzeichnis</div>
+    <ol class="toc-list">
+      <li><a href="#verantwortlicher"><span class="toc-num">01</span>Verantwortlicher</a></li>
+      <li><a href="#rechte"><span class="toc-num">02</span>Ihre Rechte</a></li>
+      <li><a href="#hosting"><span class="toc-num">03</span>Hosting</a></li>
+      <li><a href="#zugriffsdaten"><span class="toc-num">04</span>Zugriffsdaten</a></li>
+      <li><a href="#kontaktformular"><span class="toc-num">05</span>Kontaktformular</a></li>
+      <li><a href="#bewerbungen"><span class="toc-num">06</span>Bewerbungen</a></li>
+      <li><a href="#fonts"><span class="toc-num">07</span>Google Fonts</a></li>
+      <li><a href="#jobportal"><span class="toc-num">08</span>Jobportal (Starhunter)</a></li>
+      <li><a href="#cookies"><span class="toc-num">09</span>Cookies</a></li>
+      <li><a href="#aenderungen"><span class="toc-num">10</span>Änderungen</a></li>
+    </ol>
+  </div>
+</section>
+
+<div id="content">
+  <div class="content-inner">
+
+    <section id="verantwortlicher">
+      <h2><span class="h2-num">01</span>Verantwortlicher</h2>
+      <p>Verantwortlicher im Sinne der Datenschutz-Grundverordnung (DSGVO) ist:</p>
+      <div class="content-address">
+        <strong>Altura Consulting GmbH</strong>
+        Vertreten durch die Geschäftsführung: <span class="placeholder">[Name Geschäftsführer:in]</span><br>
+        Keplerweg 29/1<br>
+        88239 Wangen im Allgäu<br>
+        Telefon: <a href="tel:+491606434962">+49 160 643 49 62</a><br>
+        E-Mail: <a href="mailto:info@altura-consulting.de">info@altura-consulting.de</a>
+      </div>
+    </section>
+
+    <section id="rechte">
+      <h2><span class="h2-num">02</span>Ihre Rechte als <em>betroffene Person</em></h2>
+      <p>Sie haben nach der DSGVO folgende Rechte hinsichtlich Ihrer personenbezogenen Daten:</p>
+      <ul>
+        <li><strong>Auskunftsrecht</strong> (Art. 15 DSGVO)</li>
+        <li><strong>Recht auf Berichtigung</strong> (Art. 16 DSGVO)</li>
+        <li><strong>Recht auf Löschung</strong> (Art. 17 DSGVO)</li>
+        <li><strong>Recht auf Einschränkung der Verarbeitung</strong> (Art. 18 DSGVO)</li>
+        <li><strong>Recht auf Datenübertragbarkeit</strong> (Art. 20 DSGVO)</li>
+        <li><strong>Widerspruchsrecht</strong> (Art. 21 DSGVO)</li>
+        <li><strong>Recht auf Widerruf einer erteilten Einwilligung</strong> (Art. 7 Abs. 3 DSGVO)</li>
+      </ul>
+      <p>Sie haben zudem das Recht, sich bei einer Datenschutzaufsichtsbehörde zu beschweren (Art. 77 DSGVO). Die für uns zuständige Aufsichtsbehörde ist:</p>
+      <div class="content-address">
+        <strong>Der Landesbeauftragte für den Datenschutz und die Informationsfreiheit Baden-Württemberg</strong>
+        Lautenschlagerstraße 20<br>
+        70173 Stuttgart<br>
+        Web: <a href="https://www.baden-wuerttemberg.datenschutz.de" target="_blank" rel="noopener">www.baden-wuerttemberg.datenschutz.de</a>
+      </div>
+    </section>
+
+    <section id="hosting">
+      <h2><span class="h2-num">03</span>Hosting</h2>
+      <p>Diese Website wird bei einem externen Dienstleister gehostet. Die personenbezogenen Daten, die auf dieser Website erfasst werden, werden auf den Servern des Hosters gespeichert. Hierbei kann es sich v.a. um IP-Adressen, Kontaktanfragen, Meta- und Kommunikationsdaten, Vertragsdaten, Kontaktdaten, Namen, Webseitenzugriffe und sonstige Daten, die über eine Website generiert werden, handeln.</p>
+      <div class="content-address">
+        <strong>Hoster</strong>
+        <span class="placeholder">[Name und Anschrift des Hosters eintragen]</span>
+      </div>
+      <p>Die Verarbeitung erfolgt auf Grundlage berechtigter Interessen (Art. 6 Abs. 1 lit. f DSGVO) an einer sicheren, schnellen und effizienten Bereitstellung unseres Online-Angebots durch einen professionellen Anbieter.</p>
+    </section>
+
+    <section id="zugriffsdaten">
+      <h2><span class="h2-num">04</span>Zugriffsdaten &amp; <em>Server-Logfiles</em></h2>
+      <p>Beim Aufruf unserer Website werden automatisch Informationen in sogenannten Server-Logfiles gespeichert, die Ihr Browser an uns übermittelt. Dies sind:</p>
+      <ul>
+        <li>IP-Adresse des anfragenden Rechners</li>
+        <li>Datum und Uhrzeit des Zugriffs</li>
+        <li>Name und URL der abgerufenen Datei</li>
+        <li>Website, von der aus der Zugriff erfolgt (Referrer-URL)</li>
+        <li>Verwendeter Browser und ggf. das Betriebssystem Ihres Rechners</li>
+      </ul>
+      <p>Die Verarbeitung erfolgt zur Wahrung berechtigter Interessen (Art. 6 Abs. 1 lit. f DSGVO) zur Gewährleistung der Stabilität und Sicherheit der Website. Diese Daten werden nach spätestens 30 Tagen gelöscht.</p>
+    </section>
+
+    <section id="kontaktformular">
+      <h2><span class="h2-num">05</span>Kontaktformular &amp; <em>E-Mail-Kontakt</em></h2>
+      <p>Wenn Sie uns per Kontaktformular oder E-Mail Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert.</p>
+      <div class="callout"><strong>Rechtsgrundlage</strong>Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung) bzw. Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der effektiven Bearbeitung der Anfrage).</div>
+      <div class="callout"><strong>Speicherdauer</strong>Die Daten werden gelöscht, sobald sie für die Erreichung des Zweckes ihrer Erhebung nicht mehr erforderlich sind. Für personenbezogene Daten aus dem Kontaktformular ist dies in der Regel der Fall, wenn die jeweilige Konversation mit Ihnen beendet ist. Beendet ist die Konversation dann, wenn sich aus den Umständen entnehmen lässt, dass der betreffende Sachverhalt abschließend geklärt ist. Gesetzliche Aufbewahrungspflichten bleiben unberührt.</div>
+    </section>
+
+    <section id="bewerbungen">
+      <h2><span class="h2-num">06</span>Bewerbungen &amp; <em>Kandidatendaten</em></h2>
+      <p>Im Rahmen unserer Tätigkeit als Personalberatung verarbeiten wir personenbezogene Daten von Bewerbern und Kandidaten, insbesondere:</p>
+      <ul>
+        <li>Stammdaten (Name, Anschrift, Kontaktdaten)</li>
+        <li>Berufliche Daten (Lebenslauf, Zeugnisse, Qualifikationen)</li>
+        <li>Daten aus persönlichen Gesprächen und Eignungsdiagnostik</li>
+        <li>ggf. weitere Daten, die Sie uns freiwillig zur Verfügung stellen</li>
+      </ul>
+      <div class="callout"><strong>Rechtsgrundlage</strong>Art. 6 Abs. 1 lit. b DSGVO und § 26 BDSG (Anbahnung eines Beschäftigungsverhältnisses) sowie Art. 6 Abs. 1 lit. a DSGVO (Einwilligung) bei der Aufnahme in unseren Kandidatenpool.</div>
+      <div class="callout"><strong>Weitergabe</strong>Wir geben Ihre Daten ausschließlich nach vorheriger Rücksprache und mit Ihrer ausdrücklichen Zustimmung an potenzielle Auftraggeber (Mandanten) weiter.</div>
+      <div class="callout"><strong>Speicherdauer</strong>Bei erfolgloser Bewerbung werden Ihre Daten spätestens nach sechs Monaten gelöscht, sofern Sie nicht ausdrücklich in eine längere Speicherung (z.B. zur Aufnahme in unseren Kandidatenpool) einwilligen. In den Kandidatenpool aufgenommene Profile werden bis zu zwei Jahre gespeichert; danach erfolgt eine erneute Rückfrage.</div>
+    </section>
+
+    <section id="fonts">
+      <h2><span class="h2-num">07</span>Google Fonts</h2>
+      <p>Diese Website nutzt zur einheitlichen Darstellung von Schriftarten sogenannte Web Fonts, die von Google bereitgestellt werden. Beim Aufruf einer Seite lädt Ihr Browser die benötigten Web Fonts in seinen Browser-Cache, um Texte und Schriftarten korrekt anzuzeigen.</p>
+      <p>Zu diesem Zweck muss der von Ihnen verwendete Browser Verbindung zu den Servern von Google aufnehmen. Hierdurch erlangt Google Kenntnis darüber, dass über Ihre IP-Adresse unsere Website aufgerufen wurde.</p>
+      <p>Die Nutzung von Google Fonts erfolgt im Interesse einer einheitlichen und ansprechenden Darstellung unserer Online-Angebote. Dies stellt ein berechtigtes Interesse im Sinne von Art. 6 Abs. 1 lit. f DSGVO dar.</p>
+      <p>Anbieter: Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland. Weitere Informationen finden Sie unter <a href="https://developers.google.com/fonts/faq" target="_blank" rel="noopener">developers.google.com/fonts/faq</a> und in der Datenschutzerklärung von Google: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>.</p>
+      <p class="note">Hinweis: Falls Sie Google Fonts lokal hosten möchten (datenschutzfreundlicher), kann dieser Absatz entsprechend angepasst werden.</p>
+    </section>
+
+    <section id="jobportal">
+      <h2><span class="h2-num">08</span>Jobportal <em>(Starhunter)</em></h2>
+      <p>Auf unserer Seite „Jobportal" binden wir Inhalte des externen Anbieters <strong>Starhunter</strong> per iFrame ein. Hierdurch werden beim Aufruf der Seite Daten an die Server von Starhunter übertragen, insbesondere Ihre IP-Adresse, Browser-Informationen und Zugriffszeitpunkt.</p>
+      <p>Sofern Sie sich über das Jobportal auf eine ausgeschriebene Stelle bewerben, werden die von Ihnen eingegebenen Daten direkt bei Starhunter verarbeitet und uns zur Verfügung gestellt.</p>
+      <div class="callout"><strong>Rechtsgrundlage</strong>Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Bereitstellung eines Bewerbungsportals) bzw. Art. 6 Abs. 1 lit. b DSGVO bei aktiver Bewerbung.</div>
+      <div class="callout"><strong>Anbieter</strong><span class="placeholder">[Vollständige Adresse Starhunter eintragen]</span><br>Datenschutzerklärung: <a href="https://rs.starhunter.software/" target="_blank" rel="noopener">rs.starhunter.software</a></div>
+    </section>
+
+    <section id="cookies">
+      <h2><span class="h2-num">09</span>Cookies</h2>
+      <p>Unsere Website verwendet aktuell nur technisch notwendige Cookies, die für den Betrieb der Website erforderlich sind. Diese Cookies werden auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO gespeichert. Sie können Ihren Browser so einstellen, dass Cookies generell abgelehnt werden.</p>
+      <p class="note">Hinweis: Sobald Tracking-Tools, Analyse-Cookies oder Marketing-Cookies eingesetzt werden, ist dieser Abschnitt zwingend zu erweitern und ein Cookie-Banner mit Einwilligungsmechanismus erforderlich.</p>
+    </section>
+
+    <section id="aenderungen">
+      <h2><span class="h2-num">10</span>Änderungen dieser <em>Datenschutzerklärung</em></h2>
+      <p>Wir behalten uns vor, diese Datenschutzerklärung anzupassen, damit sie stets den aktuellen rechtlichen Anforderungen entspricht oder um Änderungen unserer Leistungen in der Datenschutzerklärung umzusetzen. Für Ihren erneuten Besuch gilt dann die neue Datenschutzerklärung.</p>
+    </section>
+
+    <div class="content-stand">Stand: <span class="placeholder">[Datum eintragen]</span></div>
+
+  </div>
+</div>
+
+<footer>
+  <a class="foot-logo" href="index-cinematic.html">Altura<em>·</em>Consulting</a>
+  <div class="foot-copy">© 2026 · Wangen im Allgäu</div>
+  <div class="foot-links">
+    <a href="impressum.html">Impressum</a>
+    <a href="datenschutz.html" class="active">Datenschutz</a>
+  </div>
+</footer>
+
+<script>
+  const burger = document.getElementById('burger');
+  const menu = document.getElementById('nav-menu');
+  burger.addEventListener('click', () => {
+    menu.classList.toggle('open');
+    burger.classList.toggle('open');
+  });
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+</script>
+
+</body>
+</html>
